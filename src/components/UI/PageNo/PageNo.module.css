@@ -1,0 +1,9 @@
+.para{
+    background-color:#373B69;
+    color:white;
+    font-size:1.3rem;
+    margin:0 4px;
+    padding:4px 10px;
+    box-shadow:2px 2px 5px rgba(0,0,0,0.8), -2px -2px 5px rgba(0,0,0,0.8);
+    cursor: pointer;
+}

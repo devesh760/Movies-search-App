@@ -1,0 +1,182 @@
+*{
+  padding:0;
+  margin:0;
+  border:none;
+}
+.card{
+   z-index: 10000;
+   border-radius:5px;
+   width:600px;
+   margin:auto;
+   display:flex;
+   flex-direction:column;
+   background-color:#373B69;
+   box-shadow:5px 5px 15px 1px rgba(0,0,0,0.4);
+   padding:50px;
+   font-family:inherit;
+   flex-wrap:wrap;
+   color:white;
+   position: fixed;
+   height: max-content;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   transition: all 0.3s;
+}
+.namenrating{
+  display:flex;
+  flex-direction:column;
+}
+.namenrating .namerate{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:0;
+
+}
+.namenrating .namerate p{
+    color:grey;
+}
+.namenrating .namerate h1{
+  width: 500px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+.namenrating .namerate p{
+      display: flex;
+      align-items: center;
+}
+.namenrating .namerate p span{
+  color:dodgerblue;
+}
+.namenrating .genre{
+  color:dodgerblue;
+  margin-bottom:15px;
+  font-size:1.15rem;
+}
+.imgcreditaboutcont{
+   display:flex;
+   justify-content:space-between;
+/*    flex-wrap:wrap; */
+}
+.imgcreditaboutcont .imageBudget{
+  display:flex;
+  flex-direction:column;
+}
+.imgcreditaboutcont .imageBudget img{
+  width:200px;
+  height:300px;
+}
+.imgcreditaboutcont .imageBudget .budget{
+  margin:15px 0;
+  display:flex;
+  justify-content:space-between;
+  font-size:1.2rem;
+  color:white;
+}
+.creditnaboutsec{
+  margin-left:20px;
+ display:flex;
+ flex-direction:column;
+     position:relative;
+}
+.creditnaboutsec .about p{
+   margin:10px 0;
+}
+.creditnaboutsec .credits{
+  display:flex;
+  flex-wrap:wrap;
+  position:relative;
+/*   justify-content: */
+}
+.creditnaboutsec .credits div{
+  margin: 0 15px;
+}
+.creditnaboutsec .credits div p{
+  width:94px;
+  color:dodgerblue;
+  /* white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis; */
+}
+.creditnaboutsec .credits .screenWriter{
+  position:absolute;
+  top:70px;
+  left:108px
+}
+.creditnaboutsec .credits .actors{
+  margin-left:0;
+}
+.trailerbtn{
+  position:absolute;
+  bottom:0;
+  right:0;
+  border:2px solid white;
+  color:inherit;
+  border-radius:5px;
+  cursor:pointer;
+  outline:none;
+  font-size:1.1rem;
+  background-color:transparent;
+  z-index: 2000000;
+  margin: 5px;
+}
+.trailerbtn a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding:10px 30px;
+  box-sizing: border-box;
+  color: white;
+  text-decoration: none;
+}
+.trailerbtn:hover a{
+   background-color:#fff;
+   color:black;
+}
+.trailerbtn:hover{
+   background-color:#fff;
+   color:black;
+}
+
+@media(max-width:800px){
+   .card{
+     padding: 20px;
+   }
+}
+@media(max-width:700px){
+  .namenrating .namerate h1{
+    width: 200px;
+  }
+  .card{
+    height: 500px;
+    width: 400px;
+    overflow-y: scroll;
+    flex-direction: row;
+  }
+  .imgcreditaboutcont{
+     flex-wrap:wrap;
+     flex-flow: column;
+     align-items: center;
+     justify-content:center;
+  }
+    .trailerbtn{
+     position:static;
+  }
+}
+@media(max-width:400px){
+    .card{
+       width: 300px;
+    }
+}
+.about p{
+  /* width: 350px; */
+  max-height: 150px;
+  overflow: scroll;
+}
+.about p::-webkit-scrollbar{
+  display: none;
+
+}

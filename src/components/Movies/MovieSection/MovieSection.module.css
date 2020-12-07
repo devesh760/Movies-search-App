@@ -1,0 +1,25 @@
+.MovieSection{
+    display:flex;
+    justify-content: space-between;
+    color: #fff;
+    font-family: inherit;
+    box-sizing: border-box;
+    align-items: center;
+    padding:0 6px;
+}
+.MovieSection button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    box-sizing: border-box;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+}
+.MovieSection button i{
+    margin-left: 5px;
+}
+.MovieSection button:hover {
+    color: yellow;
+}

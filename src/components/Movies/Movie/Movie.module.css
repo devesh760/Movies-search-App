@@ -1,0 +1,51 @@
+.Movie{
+    width: 200px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 255, 0.397);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.397);
+    font-family: 'Open Sans', sans-serif;
+    background-color: #373B69;
+    margin: 10px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+/* .Movie:hover{
+    transform: scale(3);
+    z-index: 100;
+} */
+.Movie button{
+    width: 30px;
+    position: absolute;
+    /* background-color: transparent; */
+    right: 20px;
+    top: 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.Movie img{
+    width: 200px;
+    height: 250px;
+    cursor: pointer;
+}
+.Movie div{
+    color: #fff;
+    font-family: inherit;
+    box-sizing: border-box;
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Movie div p:first-of-type{
+    font-family: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Movie div p:last-of-type{
+    width: fit-content;
+    padding: 2px 4px;
+    color: yellow;
+    background-color: #272532;
+    border-radius: 2px;
+}
