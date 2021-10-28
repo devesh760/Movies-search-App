@@ -1,13 +1,13 @@
 .Movie{
     width: 200px;
     height: 300px;
-    border: 1px solid rgba(0, 0, 255, 0.397);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.397);
     font-family: 'Open Sans', sans-serif;
     background-color: #373B69;
     margin: 10px;
     transition: all 0.3s ease-in-out;
     position: relative;
+    border-radius: 5px;
 }
 /* .Movie:hover{
     transform: scale(3);
@@ -26,6 +26,7 @@
     width: 200px;
     height: 250px;
     cursor: pointer;
+    border-radius: 5px 5px 0 0;
 }
 .Movie div{
     color: #fff;

@@ -6,8 +6,7 @@ import AllMoviesContainer from './Container/AllmoviesContainer/allMoviesContaine
 class App extends Component{
   render(){
     return(
-      <Layout>
-          
+      <Layout>      
           <AllMoviesContainer />
       </Layout>
     );

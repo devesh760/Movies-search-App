@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;1,200&display=swap');
 .Layout{
     /* width: fit-content; */
     margin: 0;
@@ -10,4 +11,8 @@
     min-height: 100vh;
     z-index: 1000000000;
     padding: 0.1px 0;
+}
+p{
+    font-family: 'Karla', sans-serif !important;
+    font-size: 1.2rem;
 }
