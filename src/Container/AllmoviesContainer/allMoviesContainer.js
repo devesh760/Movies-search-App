@@ -70,12 +70,13 @@ class allMoviesContainer extends Component{
     }
      buttonClickHandler = (id) => {
         let api = API.replace("150540", id);
-        this.setState({MovieDetails:null});
+        this.setState({ MovieDetails: null});
+        this.setState({
+            showCard: true,
+            showBackdrop: true,
+        })
         this.HttpsCall(api).then(data=>{
             this.setState({ MovieDetails: data })
-                this.setState({
-                    showCard: true,
-                    showBackdrop: true,})
         });
          this.setState({ trailerKey: null});
          let trailerapi = TRAILERAPI.replace("157336",id);

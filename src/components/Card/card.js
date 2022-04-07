@@ -1,11 +1,19 @@
 import React from "react";
 import classes from "./card.module.css";
+import Loader from "../UI/Loader/Loader";
 
 const IMGPATH = "https://image.tmdb.org/t/p/w185";
 
 const Card = (props) => {
+  let style = {
+    transform: !props.showCard ? "translateY(-200vh)" : "translateY(0)",
+  };
   let Actors, Producers, Directors, Writer, genres;
-  if(!props.data) return null;
+  if(!props.data) return <>
+      <div className={classes.card} style={style}>
+          <Loader />
+      </div>
+  </>;
   const { credits, genres: genresFromData } = props.data;
   if (props.data) {
     Actors = credits.cast
@@ -45,9 +53,6 @@ const Card = (props) => {
       genres = genresFromData[0].name + " & " + genresFromData[1].name;
     }
   }
-  let style = {
-    transform: !props.showCard ? "translateY(-200vh)" : "translateY(0)",
-  };
   return props.data ? (
     <div className={classes.card} style={style}>
       <div className={classes.namenrating}>
