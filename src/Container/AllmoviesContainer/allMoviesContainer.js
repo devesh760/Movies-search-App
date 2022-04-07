@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Component,} from 'react';
 import Movies from '../../components/Movies/Movies';
 import Toolbar from '../../components/Toolbar/Toolbar';
 import Card from '../../components/Card/card';
@@ -180,6 +180,9 @@ class allMoviesContainer extends Component{
         }
         window.scrollTo(0, 0);
     }
+    refreshHandler =(event)=>{
+        console.log('not working currently ... ');
+    }
     render(){
         let AllMovies;
             AllMovies = this.state?.Data?.map((el,idx)=>{
@@ -197,18 +200,24 @@ class allMoviesContainer extends Component{
                 />
             })
         return (
-            < >
-            <Backdrop showBackdrop={this.state.showBackdrop} clicked={this.removeBackdrop}/>
-            <Card 
-            showCard={this.state.showCard} 
-            data={this.state.MovieDetails}
-            trailerId = {this.state.trailerKey}
+          <>
+            <Backdrop
+              showBackdrop={this.state.showBackdrop}
+              clicked={this.removeBackdrop}
+            />
+            <Card
+              showCard={this.state.showCard}
+              data={this.state.MovieDetails}
+              trailerId={this.state.trailerKey}
             />
             <div className={classes.container}>
-                <Toolbar submit={this.searchHandler}></Toolbar>
+              <Toolbar
+                reload={this.refreshHandler}
+                submit={this.searchHandler}
+              ></Toolbar>
               {AllMovies}
             </div>
-            </>
+          </>
         );
     }
 }

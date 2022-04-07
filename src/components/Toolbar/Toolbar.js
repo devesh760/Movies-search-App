@@ -5,7 +5,7 @@ const Toolbar = (props) =>{
     return (
         <div className={classes.Toolbar}>
             <div>
-                <p>Movies🚀</p>
+                <p onClick={props.reload}>Movies🚀</p>
             </div>
             <form onSubmit={props.submit}>
                <input id='search' placeholder='Search'/>

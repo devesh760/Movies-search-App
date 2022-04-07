@@ -1,20 +1,21 @@
 import React from "react";
 import classes from "./card.module.css";
 
-const IMGPATH = "https://image.tmdb.org/t/p/w1280";
+const IMGPATH = "https://image.tmdb.org/t/p/w185";
 
 const Card = (props) => {
-console.log(props)
   let Actors, Producers, Directors, Writer, genres;
+  if(!props.data) return null;
+  const { credits, genres: genresFromData } = props.data;
   if (props.data) {
-    Actors = props.data.credits.cast
+    Actors = credits.cast
       .sort((a, b) => b.popularity - a.popularity)
       .slice(0, 4)
       .map((actor) => {
         return <p key={actor.id}>{actor.name}</p>;
       });
 
-    Producers = props.data.credits.crew
+    Producers = credits.crew
       .filter((el) => {
         return el.job === "Producer";
       })
@@ -22,26 +23,26 @@ console.log(props)
         return <p key={producer.id}>{producer.name}</p>;
       });
 
-    Directors = props.data.credits.crew
+    Directors = credits.crew
       .filter((el) => {
         return el.job === "Director";
       })
       .map((director) => {
         return <p key={director.id}>{director.name}</p>;
       });
-    Writer = props.data.credits.crew
+    Writer = credits.crew
       .filter((el) => {
         return el.job.includes("Writer");
       })
       .map((writer) => {
         return <p key={writer.id}>{writer.name}</p>;
       });
-    if (props.data.genres.length == 0) {
+    if (genresFromData.length === 0) {
       genres = null;
-    } else if (props.data.genres.length < 2) {
-      genres = props.data.genres[0].name;
+    } else if (genresFromData.length < 2) {
+      genres = genresFromData[0].name;
     } else {
-      genres = props.data.genres[0].name + " & " + props.data.genres[1].name;
+      genres = genresFromData[0].name + " & " + genresFromData[1].name;
     }
   }
   let style = {
@@ -72,7 +73,7 @@ console.log(props)
               href={
                 props.trailerId
                   ? `https://www.youtube.com/watch?v=${props.trailerId}`
-                  : "/"
+                  : ""
               }
             >
               See trailer
