@@ -20,6 +20,7 @@ const Movies =(props)=>{
                 clicked = {props.showCardHandler}
             />
         })
+        if(!allMovies) return null;
         if(allMovies.length===0){
             allMovies = <p className={classes.Nothing}>Nothing To Show</p>
         }

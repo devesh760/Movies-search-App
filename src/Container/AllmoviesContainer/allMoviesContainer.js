@@ -14,7 +14,7 @@ import {
   APIURL,
   SEARCHAPI,
   TRAILERAPI,
-} from "../../endpoints/constant";
+} from "../../constants/endpoints";
 
 
 class allMoviesContainer extends Component{
@@ -88,6 +88,7 @@ class allMoviesContainer extends Component{
     searchHandler=(e)=>{
         e.preventDefault();
         let ToSearch = e.target[0].value
+        if(!ToSearch) return;
         this.setState({toSearch:ToSearch})
         this.HttpsCall(SEARCHAPI+ToSearch).then(data=>{
             this.setState({showContainer:true});
@@ -125,57 +126,63 @@ class allMoviesContainer extends Component{
 
     }
     pageNoClicked=(type,no)=>{
-        if(type === "Best of 2020"){
-            let newData = sessionStorage.getItem(type + no);
-            if(newData===null){
-                this.HttpsCall(BASEURL + BESTOF2020 + APIKEY + `&page=${no}`).then(data=>{
-                    this.updatestateBythisData(type,data, true);
-                    sessionStorage.setItem(type+no,JSON.stringify(data))
-                })
-            }else{
-                this.updatestateBythisData(type,JSON.parse(newData),true);
+        switch(type){
+            case "Best of 2020":{
+                let newData = sessionStorage.getItem(type + no);
+                if(newData===null){
+                    this.HttpsCall(BASEURL + BESTOF2020 + APIKEY + `&page=${no}`).then(data=>{
+                        this.updatestateBythisData(type,data, true);
+                        sessionStorage.setItem(type+no,JSON.stringify(data))
+                    })
+                }else{
+                    this.updatestateBythisData(type,JSON.parse(newData),true);
+                }
+                break;
             }
-        }
-        else if (type === "Popular Movies") {
-            let newData = sessionStorage.getItem(type + no);
-            if (newData === null) {
-                this.HttpsCall(APIURL + `&page=${no}`).then(data => {
-                    this.updatestateBythisData(type, data, true);
-                    sessionStorage.setItem(type + no, JSON.stringify(data))
-                })
-            } else {
-                this.updatestateBythisData(type, JSON.parse(newData), true);
+            case "Popular Movies":{
+                let newData = sessionStorage.getItem(type + no);
+                if (newData === null) {
+                    this.HttpsCall(APIURL + `&page=${no}`).then(data => {
+                        this.updatestateBythisData(type, data, true);
+                        sessionStorage.setItem(type + no, JSON.stringify(data))
+                    })
+                } else {
+                    this.updatestateBythisData(type, JSON.parse(newData), true);
+                }
+                break;
             }
-        }
-        else if (type === "Best of Bollywood"){
-        let newData = sessionStorage.getItem(type + no);
-        if (newData === null) {
-            let bestbolly = BESTHINDI.replace("page=1", `page=${no}`)
-            this.HttpsCall(bestbolly).then(data=>{
-                this.updatestateBythisData(type,data,true);
-                sessionStorage.setItem(type+no,JSON.stringify(data));
-            })
-        } else {
-            this.updatestateBythisData(type, JSON.parse(newData), true);
-        }
-        }
-        else{
-            let newData = sessionStorage.getItem(type + no+this.state.toSearch);
-            if(newData===null){
-                this.HttpsCall(SEARCHAPI + this.state.toSearch+`&&page=${no}`).then(data => {
-                    this.updatestateBythisData("Searched", data, true);
-                    sessionStorage.setItem(type + no + this.state.toSearch, JSON.stringify(data));
-                })
+            case "Best of Bollywood":{
+                let newData = sessionStorage.getItem(type + no);
+                if (newData === null) {
+                    let bestbolly = BESTHINDI.replace("page=1", `page=${no}`)
+                    this.HttpsCall(bestbolly).then(data=>{
+                        this.updatestateBythisData(type,data,true);
+                        sessionStorage.setItem(type+no,JSON.stringify(data));
+                    })
+                } else {
+                    this.updatestateBythisData(type, JSON.parse(newData), true);
+                }
+                break;
             }
-            else{
-                this.updatestateBythisData(type,JSON.parse(newData),true);
+            default:{
+                let newData = sessionStorage.getItem(type + no+this.state.toSearch);
+                if(newData===null){
+                    this.HttpsCall(SEARCHAPI + this.state.toSearch+`&&page=${no}`).then(data => {
+                        this.updatestateBythisData("Searched", data, true);
+                        sessionStorage.setItem(type + no + this.state.toSearch, JSON.stringify(data));
+                    })
+                }
+                else{
+                    this.updatestateBythisData(type,JSON.parse(newData),true);
+                }
             }
+        
         }
         window.scrollTo(0, 0);
     }
     render(){
         let AllMovies;
-            AllMovies = this.state.Data.map((el,idx)=>{
+            AllMovies = this.state?.Data?.map((el,idx)=>{
                 return <Movies 
                 type = {el.type} 
                 allmovies={el.MoviesData}
