@@ -9,7 +9,7 @@ const IMGPATH = "https://image.tmdb.org/t/p/w1280/";
 
 const Movies =(props)=>{    
         console.log(props) 
-        let allMovies = props.allmovies.map(movie => {
+        let allMovies = props.allmovies?.map(movie => {
             let poster = movie.poster_path ? movie.poster_path : movie.backdrop_path
             return poster===null?null:<Movie
                 imageSrc={IMGPATH + poster}

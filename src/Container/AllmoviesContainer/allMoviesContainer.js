@@ -2,19 +2,21 @@ import React,{Component} from 'react';
 import Movies from '../../components/Movies/Movies';
 import Toolbar from '../../components/Toolbar/Toolbar';
 import Card from '../../components/Card/card';
-import Aux from '../../hoc/Auxx';
 import Backdrop from '../../components/UI/Backdrop/Backdrop'
 import classes from './allMoviesContainer.module.css';
 
+import {
+  BASEURL,
+  BESTHINDI,
+  BESTOF2020,
+  API,
+  APIKEY,
+  APIURL,
+  SEARCHAPI,
+  TRAILERAPI,
+} from "../../endpoints/constant";
 
-const BESTHINDI = "https://api.themoviedb.org/3/discover/movie?api_key=04c35731a5ee918f014970082a0088b1&language=hi-india&sort_by=popularity.desc&certification_country=india&include_adult=false&include_video=false&page=1&primary_release_year=2019&with_original_language=hi";
-const TRAILERAPI = "http://api.themoviedb.org/3/movie/157336/videos?api_key=04c35731a5ee918f014970082a0088b1"
-const APIKEY = "&&api_key=04c35731a5ee918f014970082a0088b1"
-const API = `https://api.themoviedb.org/3/movie/150540?api_key=04c35731a5ee918f014970082a0088b1&append_to_response=credits`;
-const BESTOF2020 = "discover/movie?primary_release_year=2020&sort_by=vote_average.desc"
-const BASEURL = "https://api.themoviedb.org/3/"
-const APIURL ="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
-const SEARCHAPI ="https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
+
 class allMoviesContainer extends Component{
     state={
         Data:[],
@@ -188,7 +190,7 @@ class allMoviesContainer extends Component{
                 />
             })
         return (
-            <Aux >
+            < >
             <Backdrop showBackdrop={this.state.showBackdrop} clicked={this.removeBackdrop}/>
             <Card 
             showCard={this.state.showCard} 
@@ -199,7 +201,7 @@ class allMoviesContainer extends Component{
                 <Toolbar submit={this.searchHandler}></Toolbar>
               {AllMovies}
             </div>
-            </Aux>
+            </>
         );
     }
 }
